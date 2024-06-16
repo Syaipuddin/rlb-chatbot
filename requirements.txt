@@ -1,0 +1,6 @@
+Flask
+python-dotenv
+gunicorn
+NLTK
+Sastrawi
+jaro
