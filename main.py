@@ -1,18 +1,35 @@
 import re
 import string
+
+from flask_cors import CORS
 from nltk.chat.util import reflections
 from chat import ChatExtended
 from Sastrawi.Stemmer.StemmerFactory import StemmerFactory
 from nltk.corpus import stopwords
 from flask import Flask, request
 from pairs import pairs
-import jaro
+from pymongo import MongoClient, ASCENDING
+from bson.json_util import dumps, loads
+import json
+from bson import ObjectId
+
 
 import nltk
 nltk.download('stopwords')
 
+client = MongoClient("mongodb+srv://syaipuddin:mudapane@cluster0.ndrm5.mongodb.net/?retryWrites=true&w=majority&appName=Cluster0")
+db = client['Cluster0']
+collection = db['chatbot']
+
+class JSONEncoder(json.JSONEncoder):
+    def default(self, o):
+        if isinstance(o, ObjectId):
+            return str(o)
+        return json.JSONEncoder.default(self, o)
 
 class Chatbot:
+
+
 
     # START CHATBOT
     def start(self, msg):
@@ -72,10 +89,67 @@ class Chatbot:
     
 
 app = Flask(__name__)
+CORS(app)
 cb = Chatbot()
 
-@app.route('/init', methods=['POST'])
+@app.route('/ask', methods=['POST'])
 def start_bot():
-    text = cb.start(request.form['msg'])
-    
-    return text
+    data = request.get_json()
+    prompt = data['msg']
+    room_id = data['roomId']
+
+    print(prompt)
+    print(room_id)
+
+    data_user = {
+        'roomId': room_id,
+        'isUser': True,
+        "msg": prompt
+    }
+    post_chat(data_user)
+
+    text = cb.start(prompt)
+    data_bot = {
+        'roomId': room_id,
+        'isUser': False,
+        "msg": text
+    }
+    post_chat(data_bot)
+
+    response = {
+        "msg": text
+    }
+
+    return response
+
+
+@app.route('/get-chat', methods=['POST'])
+def get_db():
+    data = request.get_json()
+    room_id = data['roomId']
+    data = db.collection.find({'roomId': room_id}).sort('_id', ASCENDING)
+    list_data = list(data)
+    json_data = dumps(list_data, indent=2)
+
+    return json_data
+
+
+@app.route('/get-chat-by-id/<id>')
+def get_db_by_id(id):
+    print(id)
+    data = db.collection.find_one({'_id': id})
+    json_data = dumps(data, indent=2)
+
+    return json_data
+
+
+@app.route('/post', methods=['POST'])
+def post_chat(data):
+
+    id = db.collection.insert_one(data).inserted_id
+
+    data = {
+        "_id": str(id)
+    }
+
+    return data
