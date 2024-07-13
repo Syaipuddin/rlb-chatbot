@@ -126,6 +126,10 @@ def start_bot():
 
     return response
 
+@app.route('/')
+def home():
+
+    return "Backend Ready"
 
 @app.route('/get-chat', methods=['POST'])
 def get_db():
