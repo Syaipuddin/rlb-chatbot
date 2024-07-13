@@ -7,3 +7,4 @@ pymongo[srv]
 Flask-PyMongo
 flask-cors
 python-dotenv
+jaro-winkler
