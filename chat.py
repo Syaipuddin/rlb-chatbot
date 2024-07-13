@@ -46,7 +46,7 @@ class ChatExtended(util.Chat):
         highest_sim_key = listed_sorted_key_sim[0]
 
         # if the highest similiarty value bigger than n return response
-        if percentage[highest_sim_key] > 2:
+        if percentage[highest_sim_key] > 1:
             pattern = self._pairs[int(highest_sim_key)][0]
             response = self._pairs[int(highest_sim_key)][1]
 

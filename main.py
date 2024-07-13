@@ -1,5 +1,6 @@
 import re
 import string
+import os
 
 from flask_cors import CORS
 from nltk.chat.util import reflections
@@ -8,16 +9,19 @@ from Sastrawi.Stemmer.StemmerFactory import StemmerFactory
 from nltk.corpus import stopwords
 from flask import Flask, request
 from pairs import pairs
-from pymongo import MongoClient, ASCENDING
+from pymongo import MongoClient, DESCENDING
 from bson.json_util import dumps, loads
 import json
 from bson import ObjectId
+from dotenv import load_dotenv, dotenv_values
+
+load_dotenv()
 
 
 import nltk
 nltk.download('stopwords')
 
-client = MongoClient("mongodb+srv://syaipuddin:mudapane@cluster0.ndrm5.mongodb.net/?retryWrites=true&w=majority&appName=Cluster0")
+client = MongoClient(os.getenv("MONGO_URI"))
 db = client['Cluster0']
 collection = db['chatbot']
 
@@ -127,7 +131,7 @@ def start_bot():
 def get_db():
     data = request.get_json()
     room_id = data['roomId']
-    data = db.collection.find({'roomId': room_id}).sort('_id', ASCENDING)
+    data = db.collection.find({'roomId': room_id}).sort('_id', DESCENDING)
     list_data = list(data)
     json_data = dumps(list_data, indent=2)
 
