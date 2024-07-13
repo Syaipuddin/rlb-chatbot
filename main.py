@@ -14,6 +14,7 @@ from bson.json_util import dumps, loads
 import json
 from bson import ObjectId
 from dotenv import load_dotenv, dotenv_values
+from waitress import serve
 
 load_dotenv()
 
@@ -95,6 +96,7 @@ class Chatbot:
 app = Flask(__name__)
 CORS(app)
 cb = Chatbot()
+
 
 @app.route('/ask', methods=['POST'])
 def start_bot():

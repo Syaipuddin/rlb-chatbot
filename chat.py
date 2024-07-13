@@ -37,7 +37,7 @@ class ChatExtended(util.Chat):
                     if similiarity >= 1:
                         sim_value += 1
 
-            percentage[f"{sequence}"] = sim_value
+            percentage[f"{sequence}"] = sim_value / len(str_words)
             sequence += 1
 
         # sort the percentage dict into the highest one first
