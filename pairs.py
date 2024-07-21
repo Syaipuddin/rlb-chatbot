@@ -128,7 +128,7 @@ pairs = [
 ['(berapa|biaya|buat|kia)', ['gratis']] ,
 ['(bagaimana|jika|anak|hilang|dan|milik|kia)', ['Tidak ada informasi terkait hal tersebut']] ,
 ['(di|mana|informasi|lebih|lanjut|tentang|kia|bisa|dapat)', ['Kepala Dusun, Disdukcapil, dan Internet']] ,
-['(apakah|anak|usia|di|bawah|5|tahun|wajib|milik|kia)', ['tidak diwajibkan tetapi disarankan memiliki KIA']] ,
+['(apakah|anak|usia|bawah|5|tahun|wajib|milik|kia)', ['tidak diwajibkan tetapi disarankan memiliki KIA']] ,
 ['(apakah|kia|bisa|guna|untuk|naik|pesawat)', ['kurang tahu']] ,
 ['(apakah|kia|bisa|guna|untuk|buka|rekening|bank)', ['Tidak. Karena syarat pembukaan Rekening Baru harus memiliki KTP-El']] ,
 ['(di|mana|lokasi|daerah|sebut)', ['Desa Melati II Kecamatan Perbaungan Kabupaten Serdang Bedagai Provinsi Sumatera Utara']] ,
@@ -163,5 +163,5 @@ pairs = [
 ['(bagaimana|rencana|bangun|daerah|sebut|di|masa|depan)', ['Direncanakan Desa Melati II menjadi Desa Wisata yang sejahtera dengan melibatkan warga masyarakat']] ,
 ['(apa|itu|surat|yang|sifat|administratif)', ['Surat yang bersifat administratif adalah jenis surat yang berisi informasi tentang kegiatan administrasi, seperti laporan, pemberitahuan, permintaan, dan pernyataan. Surat ini digunakan untuk memberikan pesan atau informasi secara tertulis dari satu pihak ke pihak lain dalam organisasi atau instansi pemerintahan.']] ,
 ['(apa|saja|jenis|surat|administratif|yang|bisa|urus|di|kantor|desa|melati|2)', ['Pelayanan Administrasi Kependudukan:\n1. Surat Keterangan Pembuatan KTP\n3. Surat Keterangan PINDAH\n4. Surat Keterangan DATANG\n5. Surat Keterangan Lahir\n6. Surat Keterangan Kematian\n7. Perubahan Data KK\n8. Surat Domisili Tempat Tinggal\n9. Surat Keterangan Riwayat Tanah\nPelayanan Ketentraman dan Ketertiban (TRANTIB): \n1. Surat Pengantar SKCK\n2. Surat Pengantar Ijin Rame-rame(Izin Keramaian)']] ,
-['(buka)', ['Selamat datang di Chatbot Desa Melati 2. Anda bisa menanyakan terkait informasi yang ingin diketahui melalui layanan ini. Pertanyaan yang bisa diajukan berkaitan dengan 1. PROFIL Desa Melati 2, 2. Tatacara kepengurusan surat yang sifatnya administratif.']] ,
+['(mulai|chatbot|melati)', ['Selamat datang di Chatbot Desa Melati 2. Anda bisa menanyakan terkait informasi yang ingin diketahui melalui layanan ini. Pertanyaan yang bisa diajukan berkaitan dengan \n1. PROFIL Desa Melati 2, \n2. Tatacara kepengurusan surat yang sifatnya administratif.']] ,
 ]
