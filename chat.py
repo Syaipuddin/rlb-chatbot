@@ -34,7 +34,7 @@ class ChatExtended(util.Chat):
                 for key in keysentence:
                     # count the similiarity of each word from rule and prompt using jaro winkler fuzzy string methods
                     similiarity = jaro.jaro_winkler_metric(word, key)
-                    if similiarity >= 1:
+                    if similiarity >= 0.75:
                         sim_value += 1
 
             percentage[f"{sequence}"] = sim_value / len(keysentence) if sim_value else 0
