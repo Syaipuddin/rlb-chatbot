@@ -24,20 +24,25 @@ class ChatExtended(util.Chat):
             # store similirity value
             sim_value = 0
 
+            keysentence = pattern.pattern.replace("(", "").replace(")", "").replace("|", " ")
+
+            similiarity = jaro.jaro_winkler_metric(str, keysentence)
+
             # split rule into words
-            keysentence = pattern.pattern.replace("(", "").replace(")", "").replace("|", " ").split()
+            # keysentence = pattern.pattern.replace("(", "").replace(")", "").replace("|", " ").split()
+            #
+            # # split prompt into words
+            # str_words = str.split()
+            #
+            # for word in str_words:
+            #     for key in keysentence:
+            #         # count the similiarity of each word from rule and prompt using jaro winkler fuzzy string methods
+            #         similiarity = jaro.jaro_winkler_metric(word, key)
+            #         if similiarity >= 0.8:
+            #             sim_value += 1
 
-            # split prompt into words
-            str_words = str.split()
-
-            for word in str_words:
-                for key in keysentence:
-                    # count the similiarity of each word from rule and prompt using jaro winkler fuzzy string methods
-                    similiarity = jaro.jaro_winkler_metric(word, key)
-                    if similiarity >= 0.8:
-                        sim_value += 1
-
-            percentage[f"{sequence}"] = sim_value / len(keysentence) if sim_value else 0
+            # percentage[f"{sequence}"] = sim_value / len(keysentence) if sim_value else 0
+            percentage[f"{sequence}"] = similiarity if similiarity else 0
             sequence += 1
 
         # sort the percentage dict into the highest one first
@@ -45,18 +50,19 @@ class ChatExtended(util.Chat):
         listed_sorted_key_sim = list(sorted_sim)
         highest_sim_key = listed_sorted_key_sim[0]
 
+        # print(sorted_sim)
+
         # if the highest similiarty value bigger than n return response
-        if percentage[highest_sim_key] > 0.70:
-            pattern = self._pairs[int(highest_sim_key)][0]
-            response = self._pairs[int(highest_sim_key)][1]
+        # if percentage[highest_sim_key] > 0.70:
+        pattern = self._pairs[int(highest_sim_key)][0]
+        response = self._pairs[int(highest_sim_key)][1]
 
+        resp = random.choice(response)  # pick a random response
+        resp = self._wildcards(resp, pattern)  # process wildcards
 
-            resp = random.choice(response)  # pick a random response
-            resp = self._wildcards(resp, pattern)  # process wildcards
-
-            # fix munged punctuation at the end
-            if resp[-2:] == "?.":
-                resp = resp[:-2] + "."
-            if resp[-2:] == "??":
-                resp = resp[:-2] + "?"
-            return resp
+        # fix munged punctuation at the end
+        if resp[-2:] == "?.":
+            resp = resp[:-2] + "."
+        if resp[-2:] == "??":
+            resp = resp[:-2] + "?"
+        return resp
