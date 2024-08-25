@@ -279,5 +279,27 @@ pairs = [
 ['(mana|bisa|dapat|informasi|lebih|tentang|surat|pindah)', ['melalui Kepala Dusun atau Kantor Desa']] ,
 ['(surat|terang|datang|adalah)', ['tidak ada surat keterangan datang']] ,
 ['(surat|terang|lahir|adalah)', ['Surat Keterangan lahir biasanya dikeluarkan oleh Puskesmas/Tempat Bersalin/Rumah sakit tempat si bayi lahir.']] ,
-['(mulai|chatbot|melati)', ['Selamat datang di Chatbot Desa Melati II. Anda bisa menanyakan terkait informasi yang ingin diketahui melalui layanan ini. Pertanyaan yang bisa diajukan berkaitan dengan \n1. PROFIL Desa Melati II, \n2. Tata kepengurusan surat yang sifatnya administratif.']] ,
+['(mulai|chatbot|melati)', ["SELAMAT DATANG DI CHATBOT MELATI II"
+                            " "
+                            "Anda bisa bertanya terkait informasi yang ingin anda ketahui melalui layanan ini. Adapun pertanyaan yang diajukan berkaitan dengan :"
+                            "(KTP)  (SURAT PINDAH)  (KARTU KELUARGA)  (SURAT KETERANGAN DOMISILI)  (SKCK)  (SKTM)  (SKU)  (KIA)  (PROFILE) "
+                            "Anda bisa mengklik salah 1 menu diatas"]] ,
+['(ktp)', ['Berikut pertanyaan mengenai KTP :'
+           '(Bagaimana cara buat KTP?) (Apa saja dokumen pelengkap pembuatan KTP?) (Apakah perlu membuat surat keterangan pembuatan KTP?)']],
+['(surat|pindah)', ['Berikut pertanyaan mengenai Surat Pindah :'
+                    '(Apa yang dimaksud surat pindah?) (Siapa yang bisa mengajukan surat pindah?) (Bagaimana cara mengajukan surat pindah?)']],
+['(kartu|keluarga)', ['Berikut pertanyaan mengenai Kartu Keluarga :'
+                      '(Bagaimana cara mendapatkan Kartu Keluarga?) (Berapa lama proses pembuatan Kartu Keluarga?)']],
+['(surat|keterangan|domisili)', ['Berikut pertanyaan mengenai Surat Keterangan Domisili: '
+                                 '(Apa yang dimaksud surat domisili tempat tinggal?) (Siapa saja yang bisa mendapatkan surat domisili tempat tinggal?) (Apa saja syarat untuk mendapatkan surat domisili tempat tinggal?)']],
+['(skck)', ['Berikut pertanyaan mengenai SKCK: '
+            '(Apakah perlu surat pengantar untuk membuat SKCK?) (Siapa saja yang bisa membuat surat pengantar SKCK?) (Apakah ada format baku untuk surat pengantar SKCK?)']],
+['(sktm)', ['berikut pertanyaan mengenai SKTM: '
+            '(Siapa saja yang bisa mendapatkan SKTM?) (Apa saja syarat untuk mendapatkan SKTM?) (Berapa biaya pembuatan SKTM?)']],
+['(sku)', ['Berikut pertanyaan mengenai SKU: '
+           '(Apa yang dimaksud dengan Surat Keterangan Usaha [SKU]?) (Bagaimana cara mendapatkan SKU?) (Apa saja syarat untuk mendapatkan SKU?)']],
+['(kia)', ['Berikut pertanyaan mengenai KIA: '
+           '(Apa yang dimaksud dengan itu KIA?) (Bagaimana cara membuat KIA?) (Siapa saja yang bisa mendapatkan KIA?)']],
+['profile', ['Berikut pertanyaan mengenai PROFILE:'
+             '(Bagaimana sejarah singkat daerah tersebut?) (Apa saja budaya yang ada di Desa Melati II?) (Apa saja makanan khas daerah tersebut?) (Apa saja tempat wisata yang ada di daerah tersebut?) (Apa saja adat istiadat yang ada di daerah tersebut?)']]
 ]

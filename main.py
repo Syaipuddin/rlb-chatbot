@@ -6,15 +6,13 @@ from flask_cors import CORS
 from nltk.chat.util import reflections
 from chat import ChatExtended
 from Sastrawi.Stemmer.StemmerFactory import StemmerFactory
-from nltk.corpus import stopwords
 from flask import Flask, request
 from pairs import pairs
 from pymongo import MongoClient, DESCENDING
 from bson.json_util import dumps, loads
 import json
 from bson import ObjectId
-from dotenv import load_dotenv, dotenv_values
-from waitress import serve
+from dotenv import load_dotenv
 
 load_dotenv()
 
@@ -40,20 +38,12 @@ class Chatbot:
     def start(self, msg):
         cf = self.case_fold(msg)
         nn = self.no_noise(cf)
-        stem = self.stemmer(nn)
-        ns = self.no_stopwords(stem)
-        
-        text = ''
-        for i in ns:
-            text += i
-
-        words = text.split()
-
-        for pair in pairs:
-            keys = pair[0].replace('(', "").replace(")", "").split("|")
+        ns = self.no_stopwords(nn)
+        text = ' '.join(ns)
+        stem = self.stemmer(text)
 
         chat = ChatExtended(pairs, reflections)
-        res = chat.respond(text)
+        res = chat.respond(stem)
         if not res:
             error = 'Mohon Maaf saya tidak bisa mengerti, Apakah anda bisa mengulangi?'
             return error
@@ -71,10 +61,14 @@ class Chatbot:
     
     # STOP WORDS REMOVAL
     def no_stopwords(self, msg_list):
-        stopwords_list = set(stopwords.words('indonesian'))
+
+        from Sastrawi.StopWordRemover.StopWordRemoverFactory import StopWordRemoverFactory
+        factory = StopWordRemoverFactory()
+        stopwords = factory.get_stop_words()
+
         cleaned = []
-        for words in msg_list:
-            if words not in stopwords_list:
+        for words in msg_list.split():
+            if words not in stopwords:
                 cleaned.append(words)
 
         return cleaned 
@@ -103,9 +97,6 @@ def start_bot():
     data = request.get_json()
     prompt = data['msg']
     room_id = data['roomId']
-
-    print(prompt)
-    print(room_id)
 
     data_user = {
         'roomId': room_id,
