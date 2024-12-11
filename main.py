@@ -47,7 +47,8 @@ class Chatbot:
         if not res:
             error = 'Mohon Maaf saya tidak bisa mengerti, Apakah anda bisa mengulangi?'
             return error
-        
+
+        print(stem)
         return res
 
     # CASE FOLDING
@@ -65,6 +66,9 @@ class Chatbot:
         from Sastrawi.StopWordRemover.StopWordRemoverFactory import StopWordRemoverFactory
         factory = StopWordRemoverFactory()
         stopwords = factory.get_stop_words()
+        additional_sw = ['apa', 'bagaimana']
+        for sw in additional_sw:
+            stopwords.append(sw)
 
         cleaned = []
         for words in msg_list.split():
