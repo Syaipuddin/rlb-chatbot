@@ -79,7 +79,7 @@ pairs = [
 ['(biaya|buat|kk)', ['Tidak Berbayar']] ,
 ['(saya|bisa|buat|kk|online)', ['Tidak bisa, Harus melalui Dinas Catatan Sipil.']] ,
 ['(yang|harus|saya|laku|jika|kk|hilang|atau|rusak)', ['membuat laporan ke Polsek dengan dasar surat dari Desa.']] ,
-['(itu|surat|domisili|tempat|tinggal)', ['Surat Domisili tempat tinggal merupakan surat yang menerangkan tempat tinggal dari warga tersebut.']] ,
+['(surat|domisili|tempat|tinggal)', ['Surat Domisili tempat tinggal merupakan surat yang menerangkan tempat tinggal dari warga tersebut.']] ,
 ['(siapa|yang|bisa|dapat|surat|domisili|tempat|tinggal)', ['setiap warga yang ingin mendapatkan surat tersebut di dukung dengan dasar-dasar yang real.']] ,
 ['(dapat|surat|domisili|tempat|tinggal)', ['melalui kantor Desa.']] ,
 ['(syarat|untuk|dapat|surat|domisili|tempat|tinggal)', ['Memabawa Kartu Keluarga atau Surat Mandah.']] ,
