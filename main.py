@@ -32,7 +32,27 @@ class JSONEncoder(json.JSONEncoder):
 
 class Chatbot:
 
+    def get_rules_group(self, str):
+        group_rules = [
+            [ r'(ktp|tanda pengenal)','ktp'],
+            [ r'(surat pindah|pindah)', 'surat_pindah'],
+            [ r'(terang datang|datang)', 'keterangan_datang'],
+            [ r'(terang lahir|lahir|skl)', 'keterangan_lahir'],
+            [ r'(kartu keluarga|keluarga|kk)', 'kk'],
+            [ r'(sehat|rumah|tangga|skrt)', 'skrt'],
+            [ r'(catatan polisi|polisi|skck)', 'skck'],
+            [ r'(terang tidak mampu|skm)', 'sktm'],
+            [ r'(terang usaha|sku)', 'sku'],
+            [ r'(identitas|anak|kia)', 'kia'],
+            [ r'(daewrah)', 'daerah']
+        ]
 
+        for group in group_rules:
+            for word in str:
+                if re.search(word, group[0]):
+                    return group[1]
+
+        return False
 
     # START CHATBOT
     def start(self, msg):
@@ -42,13 +62,16 @@ class Chatbot:
         text = ' '.join(ns)
         stem = self.stemmer(text)
 
-        chat = ChatExtended(pairs, reflections)
-        res = chat.respond(stem)
-        if not res:
-            error = 'Mohon Maaf saya tidak bisa mengerti, Apakah anda bisa mengulangi?'
-            return error
+        rule_group =  self.get_rules_group(stem)
 
-        print(stem)
+        res = 'Mohon Maaf saya tidak bisa mengerti, Apakah anda bisa mengulangi?'
+        if rule_group:
+            chat = ChatExtended(pairs[rule_group], reflections)
+            res = chat.respond(stem)
+            if not res:
+                error = 'Mohon Maaf saya tidak bisa mengerti, Apakah anda bisa mengulangi?'
+                return error
+
         return res
 
     # CASE FOLDING

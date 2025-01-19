@@ -20,28 +20,11 @@ class ChatExtended(util.Chat):
         sequence = 0
 
         # check each pattern
-        for (pattern, response) in self._pairs:
-            # store similirity value
-            sim_value = 0
-
+        for (pattern, responses) in self._pairs:
             keysentence = pattern.pattern.replace("(", "").replace(")", "").replace("|", " ")
 
             similiarity = jaro.jaro_winkler_metric(str, keysentence)
 
-            # split rule into words
-            # keysentence = pattern.pattern.replace("(", "").replace(")", "").replace("|", " ").split()
-            #
-            # # split prompt into words
-            # str_words = str.split()
-            #
-            # for word in str_words:
-            #     for key in keysentence:
-            #         # count the similiarity of each word from rule and prompt using jaro winkler fuzzy string methods
-            #         similiarity = jaro.jaro_winkler_metric(word, key)
-            #         if similiarity >= 0.8:
-            #             sim_value += 1
-
-            # percentage[f"{sequence}"] = sim_value / len(keysentence) if sim_value else 0
             percentage[f"{sequence}"] = similiarity if similiarity else 0
             sequence += 1
 
