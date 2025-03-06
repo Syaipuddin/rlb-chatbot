@@ -35,6 +35,7 @@ class Chatbot:
     def get_rules_group(self, text):
         group_rules = [
             [r'(mulai|start)', 'mulai'],
+            [r'(profile)', 'profile'],
             [r'(ktp|tanda pengenal)', 'ktp'],
             [r'(surat|pindah)', 'surat_pindah'],
             [r'(terang|datang)', 'keterangan_datang'],
@@ -42,7 +43,7 @@ class Chatbot:
             [r'(kartu|keluarga|kk)', 'kk'],
             [r'(sehat|rumah|tangga|skrt)', 'skrt'],
             [r'(catatan|polisi|skck)', 'skck'],
-            [r'(terang|tidak|mampu|skm)', 'sktm'],
+            [r'(terang|tidak|mampu|sktm)', 'sktm'],
             [r'(terang|usaha|sku)', 'sku'],
             [r'(identitas|anak|kia)', 'kia'],
             [r'(daerah)', 'daerah']
