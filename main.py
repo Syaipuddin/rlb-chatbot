@@ -32,7 +32,7 @@ class JSONEncoder(json.JSONEncoder):
 
 class Chatbot:
 
-    def get_rules_group(self, str):
+    def get_rules_group(self, text):
         group_rules = [
             [ r'(mulai|start)', 'mulai'],
             [ r'(ktp|tanda pengenal)','ktp'],
@@ -49,7 +49,7 @@ class Chatbot:
         ]
 
         for group in group_rules:
-            for word in str:
+            for word in text:
                 if re.search(word, group[0]):
                     return group[1]
 
