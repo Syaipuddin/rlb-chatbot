@@ -2,9 +2,18 @@ pairs = {
 
 # RULES FOR KTP
     'mulai' : [
-        ['(mulai|chatbot|melati)', ['']]
+        ['(mulai|chatbot|melati)', ["SELAMAT DATANG DI CHATBOT MELATI II"
+                                    " "
+                                    "Anda bisa bertanya terkait informasi yang ingin anda ketahui melalui layanan ini. Adapun pertanyaan yang diajukan berkaitan dengan :"
+                                    "(KTP)  (SURAT PINDAH) (SURAT KETERANGAN DOMISILI)  (SKCK)  (SKTM)  (SKU)  (KIA)  (PROFILE) "
+                                    "Anda bisa mengklik salah 1 menu diatas"]],
+        ['profile', ['Berikut pertanyaan mengenai PROFILE:'
+                     '(Bagaimana sejarah singkat daerah tersebut?) (Apa saja budaya yang ada di Desa Melati II?) (Apa saja makanan khas daerah tersebut?) (Apa saja tempat wisata yang ada di daerah tersebut?) (Apa saja adat istiadat yang ada di daerah tersebut?)']]
+
     ],
     'ktp' : [
+        ['(ktp)', ['Berikut pertanyaan mengenai KTP :'
+                   '(Bagaimana cara buat KTP?) (Apa saja dokumen pelengkap pembuatan KTP?) (Apakah perlu membuat surat keterangan pembuatan KTP?)']],
         ['(perlu|buat|surat|terang|panjang|ktp|jika|ingin|panjang|masa|laku)', ['kalau KTP sudah elektrik, maka otomatis akan aktif seumur hidup. Meskipun tertera tanggal berlaku KTP tersebut maka dabaikan saja (karena KTP cetakan pertama masih ada tanggal berlakunya)']] ,
         ['(buat|surat|terang|panjang|ktp|kantor|desa)', ['tidak ada surat perpanjangan KTP']] ,
         ['(perlu|buat|surat|terang|buat|ktp|jika|ingin|untuk|pertama|kali)', ['tidak ada surat keterangan, untuk membuat KTP hanya diperlukan Fotocopi Kartu Keluarga dan langsung ke Kantor Catatan Sipil Setempat.']] ,
@@ -37,6 +46,8 @@ pairs = {
 
 # RULES FOR SURAT PINDAH
     'surat_pindah' : [
+        ['(surat|pindah)', ['Berikut pertanyaan mengenai Surat Pindah :'
+                            '(Apa yang dimaksud dengan surat pindah?) (Siapa yang bisa mengajukan surat pindah?) (Bagaimana cara mengajukan surat pindah?)']],
         ['(itu|surat|pindah)', ['Surat Pindah merupakan dokumen yang telah di keluarkan dari Desa ataupun Dukcapil (apabila pindah sudah beda kabupaten) yang menerangkan bahwa telah pindah dari Desa Asal ke Desa Tujuan.']] ,
         ['(siapa|yang|bisa|aju|surat|pindah)', ['orang yang pindah']] ,
         ['(syarat|untuk|aju|surat|pindah)', ['Kartu Keluarga Asli dan Alamat Tujuan pindah']] ,
@@ -60,6 +71,8 @@ pairs = {
 
 # RULES FOR KARTU KELUARGA
     'kk': [
+        ['(kartu|keluarga)', ['Berikut pertanyaan mengenai Kartu Keluarga :'
+                              '(Bagaimana cara mendapatkan Kartu Keluarga?) (Berapa lama proses pembuatan Kartu Keluarga?)']],
         ['(itu|kartu|keluarga|kk)', ['kartu identitas keluarga yang memuat data tentang susunan, hubungan dan jumlah anggota keluarga. ']] ,
         ['(siapa|yang|hak|dapat|kk)', ['KK wajib dimiliki oleh setiap keluarga.']] ,
         ['(dapat|kk)', ['apabila keluarga tersebut baru menikah maka keluarga tersebut melakukan pemecahan KK dari kedua orang tuanya masing-masing.']] ,
@@ -74,6 +87,8 @@ pairs = {
 
 # RULES FOR SURAT DOMISILI TEMPAT TINGGAL
     'domisili' : [
+        ['(surat|keterangan|domisili)', ['Berikut pertanyaan mengenai Surat Keterangan Domisili: '
+                                         '(Apa yang dimaksud surat domisili tempat tinggal?) (Siapa saja yang bisa mendapatkan surat domisili tempat tinggal?) (Apa saja syarat untuk mendapatkan surat domisili tempat tinggal?)']],
         ['(itu|surat|domisili|tempat|tinggal)', ['Surat Domisili tempat tinggal merupakan surat yang menerangkan tempat tinggal dari warga tersebut.']] ,
         ['(siapa|yang|bisa|dapat|surat|domisili|tempat|tinggal)', ['setiap warga yang ingin mendapatkan surat tersebut di dukung dengan dasar-dasar yang real.']] ,
         ['(dapat|surat|domisili|tempat|tinggal)', ['melalui kantor Desa.']] ,
@@ -98,6 +113,8 @@ pairs = {
 
 # RULES FOR SKCK
     'skck' : [
+        ['(skck)', ['Berikut pertanyaan mengenai SKCK: '
+                    '(Apakah perlu surat pengantar untuk membuat SKCK?) (Siapa saja yang bisa membuat surat pengantar SKCK?) (Apakah ada format baku untuk surat pengantar SKCK?)']],
         ['(itu|surat|antar|skck)', ['Surat Pengantar SKCK adalah surat pengantar permohonan dari Desa kepada Polsek untuk memberikan Surat Keterangan Catatan Kriminal Seseorang']] ,
         ['(siapa|yang|bisa|buat|surat|antar|skck)', ['Setiap Orang yang sudah memiliki KTP/Wajib KTP (Umur 17 Tahun)']] ,
         ['(isi|surat|antar|skck)', ['Isi Surat Pengantar SKCK yaitu, Menjelaskan Identitas Seseorang, Data Kedua Orang Tua, Bukan anggota G30SPKI dan anggota organisasi terlarang lainnya.']] ,
@@ -110,6 +127,8 @@ pairs = {
 
     # RULES FOR SKTM
     'sktm' : [
+        ['(sktm)', ['berikut pertanyaan mengenai SKTM: '
+                    '(Siapa saja yang bisa mendapatkan SKTM?) (Apa saja syarat untuk mendapatkan SKTM?) (Berapa biaya pembuatan SKTM?)']],
         ['(itu|surat|terang|tidak|mampu|sktm)', ['Surat yang menerangkan bahwa orang tersebut tergolong ekonomi lemah/tidak Mampu']] ,
         ['(siapa|yang|hak|dapat|sktm)', ['Warga yang dinyatakan tidak mampu dalam perekonomian ']] ,
         ['(syarat|untuk|dapat|sktm)', ['Membawa FC. KK']] ,
@@ -122,6 +141,8 @@ pairs = {
 
 # RULES FOR  SKU
     'sku' : [
+        ['(sku)', ['Berikut pertanyaan mengenai SKU: '
+                   '(Apa pengertian Surat Keterangan Usaha?) (Bagaimana cara mendapatkan SKU?) (Apa saja syarat untuk mendapatkan Surat Keterangan Usaha?)']],
         ['(itu|surat|terang|usaha|sku)', ['Surat Keterangan usaha adalah surat yang menerangkan tentang usaha seseorang']] ,
         ['(siapa|yang|bisa|dapat|sku)', ['warga yang ingin mendapatkan surat tersebut dan benar memiliki usaha']] ,
         ['(syarat|untuk|dapat|sku)', ['FC KK atau FC KTP serta membawa Photo Usaha']] ,
@@ -134,6 +155,8 @@ pairs = {
 
 # RULES FOR KIA
     'kia' : [
+        ['(kia)', ['Berikut pertanyaan mengenai KIA: '
+                   '(Apa yang dimaksud dengan itu KIA?) (Bagaimana cara membuat KIA?) (Siapa saja yang bisa mendapatkan KIA?)']],
         ['(itu|kia)', ['KIA merupakan Kartu identitas seorang anak yang berlaku sampai usia 16 tahun dalam arti lain ini merupakan "KTP" nya anak-anak']] ,
         ['(manfaat|kia)', ['sebagai kartu identitas, sama halnya dengan Kartu Tanda Penduduk (KTP)']] ,
         ['(siapa|yang|bisa|dapat|kia)', ['namun KIA diperuntukkan bagi anak-anak yang berusia antara 0-5 tahun dan 5-17 tahun kurang satu hari']] ,
