@@ -1,6 +1,9 @@
 pairs = {
 
 # RULES FOR KTP
+    'mulai' : [
+        ['(mulai|chatbot|melati)', ['']]
+    ],
     'ktp' : [
         ['(perlu|buat|surat|terang|panjang|ktp|jika|ingin|panjang|masa|laku)', ['kalau KTP sudah elektrik, maka otomatis akan aktif seumur hidup. Meskipun tertera tanggal berlaku KTP tersebut maka dabaikan saja (karena KTP cetakan pertama masih ada tanggal berlakunya)']] ,
         ['(buat|surat|terang|panjang|ktp|kantor|desa)', ['tidak ada surat perpanjangan KTP']] ,
