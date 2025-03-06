@@ -34,24 +34,23 @@ class Chatbot:
 
     def get_rules_group(self, text):
         group_rules = [
-            [ r'(mulai|start)', 'mulai'],
-            [ r'(ktp|tanda pengenal)','ktp'],
-            [ r'(surat|pindah|pindah)', 'surat_pindah'],
-            [ r'(terang|datang)', 'keterangan_datang'],
-            [ r'(terang|lahir|skl)', 'keterangan_lahir'],
-            [ r'(kartu|keluarga|kk)', 'kk'],
-            [ r'(sehat|rumah|tangga|skrt)', 'skrt'],
-            [ r'(catatan|polisi|skck)', 'skck'],
-            [ r'(terang|tidak|mampu|skm)', 'sktm'],
-            [ r'(terang|usaha|sku)', 'sku'],
-            [ r'(identitas|anak|kia)', 'kia'],
-            [ r'(daerah)', 'daerah']
+            [r'(mulai|start)', 'mulai'],
+            [r'(ktp|tanda pengenal)', 'ktp'],
+            [r'(surat|pindah)', 'surat_pindah'],
+            [r'(terang|datang)', 'keterangan_datang'],
+            [r'(terang|lahir|skl)', 'keterangan_lahir'],
+            [r'(kartu|keluarga|kk)', 'kk'],
+            [r'(sehat|rumah|tangga|skrt)', 'skrt'],
+            [r'(catatan|polisi|skck)', 'skck'],
+            [r'(terang|tidak|mampu|skm)', 'sktm'],
+            [r'(terang|usaha|sku)', 'sku'],
+            [r'(identitas|anak|kia)', 'kia'],
+            [r'(daerah)', 'daerah']
         ]
 
         for group in group_rules:
-            for word in text:
-                if re.search(word, group[0]):
-                    return group[1]
+            if re.search(group[0], text):
+                return group[1]
 
         return False
 
