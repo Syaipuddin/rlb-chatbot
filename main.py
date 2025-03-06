@@ -36,16 +36,16 @@ class Chatbot:
         group_rules = [
             [ r'(mulai|start)', 'mulai'],
             [ r'(ktp|tanda pengenal)','ktp'],
-            [ r'(surat pindah|pindah)', 'surat_pindah'],
-            [ r'(terang datang|datang)', 'keterangan_datang'],
-            [ r'(terang lahir|lahir|skl)', 'keterangan_lahir'],
-            [ r'(kartu keluarga|keluarga|kk)', 'kk'],
+            [ r'(surat|pindah|pindah)', 'surat_pindah'],
+            [ r'(terang|datang)', 'keterangan_datang'],
+            [ r'(terang|lahir|skl)', 'keterangan_lahir'],
+            [ r'(kartu|keluarga|kk)', 'kk'],
             [ r'(sehat|rumah|tangga|skrt)', 'skrt'],
-            [ r'(catatan polisi|polisi|skck)', 'skck'],
-            [ r'(terang tidak mampu|skm)', 'sktm'],
-            [ r'(terang usaha|sku)', 'sku'],
+            [ r'(catatan|polisi|skck)', 'skck'],
+            [ r'(terang|tidak|mampu|skm)', 'sktm'],
+            [ r'(terang|usaha|sku)', 'sku'],
             [ r'(identitas|anak|kia)', 'kia'],
-            [ r'(daewrah)', 'daerah']
+            [ r'(daerah)', 'daerah']
         ]
 
         for group in group_rules:
