@@ -5,11 +5,13 @@ pairs = {
         ['(mulai|chatbot|melati)', ["SELAMAT DATANG DI CHATBOT MELATI II"
                                     " "
                                     "Anda bisa bertanya terkait informasi yang ingin anda ketahui melalui layanan ini. Adapun pertanyaan yang diajukan berkaitan dengan :"
-                                    "(KTP)  (SURAT PINDAH) (SURAT KETERANGAN DOMISILI)  (SKCK)  (SKTM)  (SKU)  (KIA)  (PROFILE) "
+                                     "(KTP)  (SURAT PINDAH) (SURAT KETERANGAN DOMISILI)  (SKCK)  (SKTM)  (SKU)  (KIA)  (PROFILE) "
                                     "Anda bisa mengklik salah 1 menu diatas"]],
+
+    ],
+    'profile' : [
         ['profile', ['Berikut pertanyaan mengenai PROFILE:'
                      '(Bagaimana sejarah singkat daerah tersebut?) (Apa saja budaya yang ada di Desa Melati II?) (Apa saja makanan khas daerah tersebut?) (Apa saja tempat wisata yang ada di daerah tersebut?) (Apa saja adat istiadat yang ada di daerah tersebut?)']]
-
     ],
     'ktp' : [
         ['(ktp)', ['Berikut pertanyaan mengenai KTP :'
@@ -71,7 +73,7 @@ pairs = {
 
 # RULES FOR KARTU KELUARGA
     'kk': [
-        ['(kartu|keluarga)', ['Berikut pertanyaan mengenai Kartu Keluarga :'
+        ['(kartu keluarga)', ['Berikut pertanyaan mengenai Kartu Keluarga :'
                               '(Bagaimana cara mendapatkan Kartu Keluarga?) (Berapa lama proses pembuatan Kartu Keluarga?)']],
         ['(itu|kartu|keluarga|kk)', ['kartu identitas keluarga yang memuat data tentang susunan, hubungan dan jumlah anggota keluarga. ']] ,
         ['(siapa|yang|hak|dapat|kk)', ['KK wajib dimiliki oleh setiap keluarga.']] ,
@@ -87,7 +89,7 @@ pairs = {
 
 # RULES FOR SURAT DOMISILI TEMPAT TINGGAL
     'domisili' : [
-        ['(surat|keterangan|domisili)', ['Berikut pertanyaan mengenai Surat Keterangan Domisili: '
+        ['(surat|terang|omisili)', ['Berikut pertanyaan mengenai Surat Keterangan Domisili: '
                                          '(Apa yang dimaksud surat domisili tempat tinggal?) (Siapa saja yang bisa mendapatkan surat domisili tempat tinggal?) (Apa saja syarat untuk mendapatkan surat domisili tempat tinggal?)']],
         ['(itu|surat|domisili|tempat|tinggal)', ['Surat Domisili tempat tinggal merupakan surat yang menerangkan tempat tinggal dari warga tersebut.']] ,
         ['(siapa|yang|bisa|dapat|surat|domisili|tempat|tinggal)', ['setiap warga yang ingin mendapatkan surat tersebut di dukung dengan dasar-dasar yang real.']] ,
