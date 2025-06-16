@@ -11,6 +11,7 @@ from pairs import pairs
 from pymongo import MongoClient, DESCENDING
 from bson.json_util import dumps, loads
 import json
+from util import extend_text, similarity_score
 from bson import ObjectId
 from dotenv import load_dotenv
 
@@ -32,38 +33,64 @@ class JSONEncoder(json.JSONEncoder):
 
 class Chatbot:
 
-    def get_rules_group(self, text):
+    def get_rules_group(self, str):
         group_rules = [
-            [r'(mulai|start)', 'mulai'],
-            [r'(profile)', 'profile'],
-            [r'(ktp|tanda pengenal)', 'ktp'],
-            [r'(surat|pindah)', 'surat_pindah'],
-            [r'(terang|datang)', 'keterangan_datang'],
-            [r'(terang|lahir|skl)', 'keterangan_lahir'],
-            [r'(kartu|keluarga|kk)', 'kk'],
-            [r'(sehat|rumah|tangga|skrt)', 'skrt'],
-            [r'(catatan|polisi|skck)', 'skck'],
-            [r'(terang|tidak|mampu|sktm)', 'sktm'],
-            [r'(terang|usaha|sku)', 'sku'],
-            [r'(identitas|anak|kia)', 'kia'],
-            [r'(daerah)', 'daerah']
+            [ r'(ktp|tanda pengenal|kartu tanda penduduk)','ktp'],
+            [ r'(surat pindah|surat terang pindah)', 'surat_pindah'],
+            [ r'(datang|terang datang)', 'keterangan_datang'],
+            [ r'(skl|lahir|terang lahir)', 'keterangan_lahir'],
+            [ r'(kk|kartu keluarga)', 'kk'],
+            [ r'(skrt|rumah tangga)', 'skrt'],
+            [ r'(skk|surat terang mati)', 'skk'],
+            [ r'(skck|catat polisi)', 'skck'],
+            [ r'(skm|sktm|terang mampu)', 'sktm'],
+            [ r'(sku|terang usaha)', 'sku'],
+            [ r'(kia|identitas|anak)', 'kia'],
+            [ r'(profil|daerah)', 'profil'],
+            [ r'(domisili)', 'domisili'],
+            [ r'(riwayat tanah)', 'surat_tanah'],
+            [ r'(buka|administratif)', 'umum'],
         ]
 
-        for group in group_rules:
-            if re.search(group[0], text):
-                return group[1]
+        input_str = str.lower()
+        matches = []
 
-        return False
+        for keyword, label in group_rules:
+            max_score = 0
+
+            keyword = keyword.replace('(', '')
+            keyword = keyword.replace(')', '')
+            for word in keyword.split('|'):
+                if word in input_str:
+                    score = similarity_score(input_str, word)
+                    if score > max_score:
+                        max_score = score
+                    
+            matches.append(max_score)
+            
+        # print(matches)
+        # Ambil indeks dengan skor tertinggi
+        max_index = matches.index(max(matches))
+        # Ambil label yang sesuai
+        return group_rules[max_index][1] 
+
 
     # START CHATBOT
     def start(self, msg):
         cf = self.case_fold(msg)
+        print("case fold: " + cf)
         nn = self.no_noise(cf)
+        print("no noise: " + nn)
         ns = self.no_stopwords(nn)
         text = ' '.join(ns)
-        stem = self.stemmer(text)
+        print("no stop words: " + text)
+        extended = extend_text(text)
+        print("extended text: " + extended)
+        stem = self.stemmer(extended)
+        print("stem: " + stem)
 
         rule_group =  self.get_rules_group(stem)
+        print("rule group: " + str(rule_group))
 
         res = 'Mohon Maaf saya tidak bisa mengerti, Apakah anda bisa mengulangi?'
         if rule_group:
